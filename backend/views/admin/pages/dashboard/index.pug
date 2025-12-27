@@ -1,0 +1,67 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert
+
+block main 
+    if(role.permissions.length > 0)
+        - if(messages.success)
+            +alert-success(messages.success)
+        .content
+            h1 Trang dashboard
+            .row
+                .col-12.py-3.px-3
+                    .card 
+                        .card-header Thông tin tài khoản 
+                        .card-body 
+                            p.card-text Họ và tên: 
+                                b #{statistic.account.fullName}
+                            p.card-text Email: 
+                                b #{statistic.account.email}
+                            p.card-text Số điện thoại: 
+                                b #{statistic.account.phone}
+                            p.card-text Phân quyền: 
+                                b #{statistic.account.role}
+            .row
+                .col-6.py-3.px-3
+                    .card 
+                        .card-header Danh mục sản phẩm
+                        .card-body 
+                            p.card-text Số lượng:  
+                                b #{statistic.productCategory.quantity}
+                            p.card-text Hoạt động: 
+                                b #{statistic.productCategory.active}
+                            p.card-text Dừng hoạt động: 
+                                b #{statistic.productCategory.inactive}
+                .col-6.py-3.px-3
+                    .card 
+                        .card-header Sản phẩm
+                        .card-body 
+                            p.card-text Số lượng:  
+                                b #{statistic.product.quantity}
+                            p.card-text Hoạt động: 
+                                b #{statistic.product.active}
+                            p.card-text Dừng hoạt động: 
+                                b #{statistic.product.inactive}
+            .row
+                .col-6.py-3.px-3
+                    .card 
+                        .card-header Tài khoản admin
+                        .card-body 
+                            p.card-text Số lượng:  
+                                b #{statistic.accountAdmin.quantity}
+                            p.card-text Hoạt động: 
+                                b #{statistic.accountAdmin.active}
+                            p.card-text Dừng hoạt động: 
+                                b #{statistic.accountAdmin.inactive}
+                .col-6.py-3.px-3
+                    .card 
+                        .card-header Tài khoản khách hàng
+                        .card-body 
+                            p.card-text Số lượng:  
+                                b #{statistic.accountClient.quantity}
+                            p.card-text Hoạt động: 
+                                b #{statistic.accountClient.active}
+                            p.card-text Dừng hoạt động: 
+                                b #{statistic.accountClient.inactive}
+                
+
+

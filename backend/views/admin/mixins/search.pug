@@ -1,0 +1,11 @@
+mixin search-box(keyword)
+    form(class="form-inline pt-4" form-search)
+                        
+        .form-group.mx-sm-3.mb-2
+            input(type="text" class="form-control" placeholder="Nhập từ khóa" keyword="" value=keyword) 
+        
+        button(type="submit" class="btn btn-success mb-2") Tìm
+        .form-group.mx-sm-3.mb-2
+            button(class="form-control btn btn-danger mb-2" button-delete) Xóa tìm kiếm
+
+    

@@ -1,0 +1,24 @@
+.sider
+    .inner-menu 
+        ul 
+            if(role.permissions.length > 0)
+                li 
+                    a(href="/admin/dashboard") Tổng quan
+            if(role.permissions.includes("product_view"))
+                li 
+                    a(href="/admin/products") Danh sách sản phẩm
+            if(role.permissions.includes("product_category_view"))
+                li 
+                    a(href="/admin/product-category") Danh mục sản phẩm
+            if(role.permissions.includes("permission_view"))
+                li 
+                    a(href="/admin/roles") Nhóm quyền
+            if(role.permissions.includes("role_view"))
+                li 
+                    a(href="/admin/roles/permission") Phân quyền
+            if(role.permissions.includes("account_view"))
+                li 
+                    a(href="/admin/accounts") Danh sách tài khoản
+            if(role.permissions.includes("setting_view"))
+                li 
+                    a(href="/admin/setting/general") Cài đặt chung

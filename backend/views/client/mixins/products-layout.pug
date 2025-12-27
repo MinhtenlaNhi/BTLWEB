@@ -1,0 +1,10 @@
+include ./products-item-layout.pug
+mixin product-list(data)
+    .product-list 
+        each item in data
+            +products-item(item)
+
+
+
+
+    

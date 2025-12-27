@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+block main
+    if(role.permissions.includes("setting_view"))
+        - if (messages.success)
+            +alert-success(messages.success)
+        .setting-general
+            h1 Cài đặt chung
+            form(id="form-update-setting" method="POST" action=`${prefixAdmin}/setting/update-post` enctype="multipart/form-data" runat="server")
+                .form-group
+                    label(for="websiteName") Tên website
+                    input(type="text" class="form-control" id="websiteName" name="websiteName"  value=setting.websiteName)
+
+                div(class="form-group" upload-image)
+                    label(for="logo") Ảnh
+                    input(upload-image-input type="file" class="form-control" name="logo" accept="image/*" value=setting.logo)
+                    img(id="thumbnail-preview" src=setting.logo alt="" class="upload-image-preview")
+                
+                .form-group
+                    label(for="phone") Số điện thoại
+                    input(type="text" class="form-control" id="phone" name="phone"  value=setting.phone)
+                .form-group
+                    label(for="email") Email 
+                    input(type="text" class="form-control" id="email" name="email"  value=setting.email)
+                .form-group
+                    label(for="address") Địa chỉ
+                    input(type="text" class="form-control" id="address" name="address"  value=setting.address)
+                .form-group
+                    label(for="copyright") Copyright
+                    input(type="text" class="form-control" id="copyright" name="copyright"  value=setting.copyright)
+
+
+                button(type="submit" class="btn btn-primary d-block") Cập nhật

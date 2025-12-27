@@ -1,0 +1,257 @@
+.header {
+  height: 100px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.row,
+.col-3,
+.inner-image {
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.inner-image img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: 3/4;
+}
+
+.inner-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.inner-search form input {
+  border: none;
+  padding: 5px;
+  width: 80%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.inner-search form input:focus {
+  outline: none;
+}
+
+.inner-search form button {
+  height: 100%;
+  background: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.image img {
+  width: 54%;
+  height: 72%;
+  object-fit: contain;
+  padding-top: 20px;
+}
+
+.header .inner-menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+.main {
+  padding: 60px;
+  height: 800px;
+  margin-bottom: 100px;
+}
+
+.product-list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 50px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product-list .product-item {
+  width: calc(100% / 5 - 20px);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding-bottom: 20px;
+  height: 350px;
+  position: relative;
+}
+
+.product-item .inner-featured {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.product-item .inner-featured span {
+  padding: 5px 10px;
+}
+
+.product-item .inner-image {
+  width: 100%;
+  height: 100px;
+}
+
+.product-item .inner-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.product-item .inner-title {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.inner-price-new {
+  color: green;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.inner-price-old {
+  color: red;
+  font-weight: bold;
+  margin: 10px;
+  text-decoration: line-through;
+}
+
+.inner-discount {
+  background-color: red;
+  display: inline;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.inner-menu .sub-menu {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  z-index: 999;
+}
+
+ul li {
+  list-style-type: none;
+  width: 100px;
+}
+
+.sub-menu > li:last-child {
+  position: relative;
+}
+
+.sub-menu li:last-child:hover > ul {
+  display: block;
+}
+
+.sub-menu li:last-child > ul {
+  display: none;
+  position: absolute;
+  right: 50px;
+  top: 25px;
+}
+
+.sub-menu li:last-child > ul li {
+  position: relative;
+  background-color: aliceblue;
+  padding: 10px;
+  width: 150px;
+}
+
+.sub-menu li:last-child > ul li:hover > ul {
+  display: block;
+}
+.sub-menu li:last-child > ul > li ul {
+  display: none;
+  position: absolute;
+  right: 150px;
+  top: 0px;
+}
+
+.product-detail .inner-discount {
+  color: black;
+  background-color: white;
+  padding: 0;
+}
+
+.product-detail .inner-discount span,
+.product-detail .inner-stock span {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.product-detail .inner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.product-detail .inner-image img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+}
+
+.product-detail .inner-desc {
+  height: 400px;
+}
+
+.product-detail .inner-desc pre {
+  height: 100%;
+}
+
+.message-info {
+  padding: 10px;
+  position: fixed;
+  width: 350px;
+  top: 80px;
+  right: 0;
+  z-index: 999;
+  transition: all ease 1s;
+}
+
+.message-info.hidden {
+  animation: alert-hidden 1s linear both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -1000px;
+    display: none;
+  }
+}
+
+.cart table td:nth-child(2) {
+  width: 104px;
+}
+.cart table img {
+  width: 40%;
+  height: 40%;
+  object-fit: contain;
+  aspect-ratio: 11 / 12;
+}

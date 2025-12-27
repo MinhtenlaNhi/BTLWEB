@@ -1,0 +1,55 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+include ../../mixins/box-datetime.pug
+
+block main
+
+    if(role.permissions.includes("permission_view"))
+        - if(messages.success)
+            +alert-success(messages.success)
+        .role
+            .row
+                .col-12
+                    h1=message
+            if(role.permissions.includes("role_create"))
+            
+                .row
+                    .col-12
+                        .card
+                            .card-header Danh sách
+                            
+                            .card-body
+                                a(href=`${prefixAdmin}/roles/create` class="btn btn-outline-success") +Thêm mới
+                                table.my-5
+                                    thead 
+                                        tr 
+                                            th STT 
+                                            th Tiêu đề
+                                            th Mô tả ngắn
+                                            th Hành động
+                                            th Người tạo
+                                            th Người cập nhật
+                                            
+                                    tbody        
+                                        each item, index in data
+                                            tr
+                                                td #{index + 1}
+                                                td #{item.title} 
+                                                td #{item.description}
+                                                td 
+                                                    a(href=`${prefixAdmin}/roles/detail/${item.id}` class="btn btn-outline-secondary") Chi tiết
+                                                    if(role.permissions.includes("role_edit"))
+
+                                                        a(href=`${prefixAdmin}/roles/edit/${item.id}` class="btn btn-outline-warning") Sửa
+                                                    if(role.permissions.includes("role_delete"))
+                                                    
+                                                        button(id=item.id  class="btn btn-outline-danger" button-delete-role) Xóa
+                                                td  
+                                                    p #{item.createrRole}
+                                                    +time-create(item)
+                                                td 
+                                                    p #{item.updaterRole}
+                                                    +time-update(item)
+                    
+        form(data-path=`${prefixAdmin}/roles/delete` action="" method="POST" id="form-delete-item")
+        script(src="/admin/js/role.js")

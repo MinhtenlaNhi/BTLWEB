@@ -1,0 +1,144 @@
+header {
+  background-color: black;
+  padding: 15px 20px;
+}
+
+header span {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.main {
+  display: flex;
+  height: 100vw;
+}
+
+.main .sider {
+  height: 100%;
+  width: 18%;
+  background-color: #ccc;
+  padding: 10px 15px;
+}
+
+.sider a {
+  display: block;
+  color: white;
+  font-weight: bold;
+  /* border-bottom: 1px solid #ccc; */
+  margin-bottom: 20px;
+}
+
+.content {
+  width: 80%;
+  padding: 15px 20px;
+}
+
+.main .product,
+.main .product-categories,
+.main .role,
+.main .accounts,
+.main .info-user,
+.setting-general {
+  width: 80%;
+  padding: 20px;
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+table thead {
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+table thead th {
+  padding: 20px;
+}
+
+table tbody td {
+  padding: 0 20px;
+}
+
+table tbody td img {
+  height: 100px;
+  width: 100%;
+  aspect-ratio: 5 / 11;
+  object-fit: contain;
+}
+
+table tbody td span {
+  cursor: pointer;
+}
+table tbody td button {
+  margin-right: 10px;
+}
+
+.message-info {
+  padding: 10px;
+  position: fixed;
+  width: 350px;
+  top: 50px;
+  right: 0;
+  z-index: 999;
+  transition: all ease 1s;
+}
+
+.message-info.hidden {
+  animation: alert-hidden 1s linear both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -1000px;
+    display: none;
+  }
+}
+
+.upload-image-preview {
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.upload-image-preview[src=""] {
+  display: none;
+}
+
+.inner-menu ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.inner-menu ul li a {
+  text-decoration: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.role-permission {
+  width: calc(100% - 18%);
+  padding: 15px;
+}
+
+.header .inner-setting {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .inner-logo a{
+  color: white;
+  font-weight: 700;
+  font-size: 28px;
+  text-decoration: none;
+}

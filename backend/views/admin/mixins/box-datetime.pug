@@ -1,0 +1,9 @@
+mixin time-create(item)
+    p #{item.createdBy ? `${item.createdBy.createdAt.getDate() < 10 ? '0' + item.createdBy.createdAt.getDate() : item.createdBy.createdAt.getDate()}/${item.createdBy.createdAt.getMonth() + 1 < 10 ? '0' + item.createdBy.createdAt.getMonth() + 1 : item.createdBy.createdAt.getMonth() + 1}/${item.createdBy.createdAt.getFullYear()}` : ""}
+    p #{item.createdBy ? `${item.createdBy.createdAt.getHours() < 10 ? '0' + item.createdBy.createdAt.getHours() : item.createdBy.createdAt.getHours()}:${item.createdBy.createdAt.getMinutes() + 1 < 10 ? '0' + (item.createdBy.createdAt.getMinutes() + 1) : item.createdBy.createdAt.getMinutes() + 1}:${item.createdBy.createdAt.getSeconds() < 10 ? '0' + item.createdBy.createdAt.getSeconds() : item.createdBy.createdAt.getSeconds()}` : ""}
+                                
+
+mixin time-update(item)
+    p #{item.updatedAt ? `${item.updatedAt.getDate() < 10 ? '0' + item.updatedAt.getDate() : item.updatedAt.getDate()}/${item.updatedAt.getMonth() + 1 < 10 ? '0' + item.updatedAt.getMonth() + 1 : item.updatedAt.getMonth() + 1}/${item.updatedAt.getFullYear()}` : ""}
+    p #{item.updatedAt ? `${item.updatedAt.getHours() < 10 ? '0' + item.updatedAt.getHours() : item.updatedAt.getHours()}:${item.updatedAt.getMinutes() < 10 ? '0' + (item.updatedAt.getMinutes()) : item.updatedAt.getMinutes()}:${item.updatedAt.getSeconds() < 10 ? '0' + item.updatedAt.getSeconds() : item.updatedAt.getSeconds()}` : ""}
+                                

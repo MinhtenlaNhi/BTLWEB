@@ -1,0 +1,22 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+
+block main 
+    - if(messages.success)
+        +alert-success(messages.success)
+    .info-user 
+        h1=message 
+
+        .image.my-3
+            img(src=user.avartar alt="avartar")
+        p Họ tên: 
+            b #{user.fullName}
+        p Email: 
+            b #{user.email}
+        p Số điện thoại: 
+            b #{user.phone}
+        p Trạng thái: 
+            b #{user.status === "active" ? "Hoạt động" : "Dừng hoạt động"}
+        p Phân quyền: 
+            b #{role.title}
+        a(href=`${prefixAdmin}/my-account/edit` class="btn btn-primary") Chỉnh sửa thông tin

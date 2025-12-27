@@ -1,0 +1,41 @@
+html    
+    head
+        title= title 
+
+    body 
+        header.header.bg-dark
+            .container
+                .row.h-100
+                    .col-3.h-100
+                        .inner-image 
+                            if(setting) 
+                                img(src=setting.logo)
+                    
+                    .col-3 
+                        .inner-search 
+                            form(action="/search" method="POST")
+                                input(type="text" name="keyword" value=keyword placeholder="Tìm kiếm sản phẩm")
+                                button(type="submit") Tìm
+
+                    .col-3.h-100 
+                        .inner-menu
+                            ul.sub-menu
+                                li 
+                                    a(href="/" class="text-white") Trang chủ
+                                
+                                li
+                                    a(href="/products" class="text-white") Sản phẩm
+                                    +box-menu(tree)
+                    .col-3 
+                        .inner-cart
+                            a(href="/cart" class="text-white") Giỏ hàng(#{totalProducts ? totalProducts : "0"}) 
+                        .inner-account.text-center.mx-2
+                            if(user)
+                                a(href="/user/info" class="d-block text-white") #{user.fullName}
+                                a(class="text-white px-4 d-block" href="/user/logout") Đăng xuất
+                            else 
+                                ul  
+                                    li 
+                                        a(class="text-white" href="/user/register") Đăng ký
+                                    li 
+                                        a(class="text-white" href="/user/login") Đăng nhập

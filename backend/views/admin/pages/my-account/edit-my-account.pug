@@ -1,0 +1,34 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+
+block main 
+    - if(messages.error)
+        +alert-error(messages.error)
+    .accounts
+        h1= message
+        form(id="form-create-account" method="POST" action=`${prefixAdmin}/my-account/create-post?_method=PATCH` enctype="multipart/form-data")
+            .form-group
+                label(for="fullName") Họ và tên*
+                input(type="text" class="form-control" id="fullName" name="fullName"  value=user.fullName )
+            
+            .form-group
+                label(for="email") Email*
+                input(type="text" class="form-control" id="email" rows="3" name="email"  value=user.email ) 
+            
+
+            .form-group
+                label(for="password") Mật khẩu*
+                input(type="password" class="form-control" id="password" name="password" value=user.password)
+            
+            .form-group
+                label(for="phone") Số điện thoại
+                input(type="text" class="form-control" id="phone" name="phone"  value=user.phone)
+            
+            
+            div(class="form-group" upload-image)
+                label(for="avartar") Avartar
+                input(upload-image-input type="file" class="form-control" name="avartar" accept="image/*" value="")
+                img(id="thumbnail-preview" src=user.avartar alt="" class="upload-image-preview")
+                
+            button(type="submit" class="btn btn-primary d-block") Cập nhật
+

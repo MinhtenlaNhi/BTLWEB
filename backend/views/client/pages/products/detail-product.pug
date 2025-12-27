@@ -1,0 +1,46 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+block main 
+    - if(messages.success)
+        +alert-success(messages.success)
+    .product-detail
+        .container 
+            .row 
+                .col-6
+                    .inner-image 
+                        img(src=product.thumbnail alt="Ảnh sản phẩm")
+                .col-6 
+                    h1.inner-title #{product.title}   
+                    span Danh mục: 
+                        if(category)
+                            a(href=`/products/${category.slug}`) #{category.title}
+                        if(product.price)
+                            p.inner-price-new.ml-0 #{product.price}$
+                        if(product.price && product.discountPercentage)
+                            p.inner-price-old.ml-0 #{(product.price * product.discountPercentage).toFixed(0)}$
+                        if(product.discountPercentage)
+                            p.d-block.ml-0.inner-discount Giảm tới: 
+                                span.badge-danger #{product.discountPercentage}%
+                        if(product.stock)
+                            p.d-block.ml-0.inner-stock.my-3 Còn lại: 
+                                span.badge-success #{product.stock} 
+                                span sản phẩm
+                            form(method="POST" action=`/cart/add/${product.id}`)
+                                input(
+                                    type="number" 
+                                    min=1
+                                    max=product.stock
+                                    name="quantity"
+                                    value=1
+                                    class="my-3"
+                                )
+                                button(
+                                    type="submit"
+                                    class="btn btn-success d-block form-control"
+                                ) Thêm vào giỏ hàng
+            .row 
+                .col-12     
+
+                    .inner-desc.my-5 
+                        h2.text-success Mô tả sản phẩm
+                        div !{product.description}

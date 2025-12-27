@@ -1,0 +1,14 @@
+extends ../../layouts/default.pug
+
+block main 
+    .info-user 
+        //- .image.my-3
+        //-     img(src=user.avartar alt="avartar")
+        p Họ tên: 
+            b #{user.fullName}
+        p Email: 
+            b #{user.email}
+        //- p Số điện thoại: 
+        //-     b #{user.phone}
+        p Trạng thái: 
+            b #{user.status === "active" ? "Hoạt động" : "Dừng hoạt động"}

@@ -1,0 +1,36 @@
+extends ../../layouts/default.pug
+include ../../mixins/table-tree.pug
+include ../../mixins/box-alert.pug
+block main
+    if(role.permissions.includes("product_category_view"))
+        - if(messages.success)
+            +alert-success(messages.success)
+        .product-categories
+            .row
+                .col-12
+                    h1=message
+            if(role.permissions.includes("product_category_create"))
+            
+                .row
+                    .col-12
+                        .card
+                            .card-header Danh sách
+                            
+                            .card-body
+                                a(href=`${prefixAdmin}/product-category/create` class="btn btn-outline-success") +Thêm mới
+                                table.my-5
+                                    thead 
+                                        tr 
+                                            th 
+                                                input(type="checkbox" name="checkall")
+                                            th STT 
+                                            th Hình ảnh
+                                            th Tiêu đề
+                                            th Vị trí
+                                            th Trạng thái
+                                            th Hành động
+                                    tbody        
+                                        +table-tree(data)
+                    
+            form(method="POST" data-path=`${prefixAdmin}/product-category/delete-product-category` action="" id="form-delete-item")
+            script(src="/admin/js/product-category.js")

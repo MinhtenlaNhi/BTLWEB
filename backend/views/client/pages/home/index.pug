@@ -1,0 +1,15 @@
+extends ../../layouts/default.pug
+include ../../mixins/products-layout.pug
+include ../../mixins/box-head.pug
+include ../../mixins/box-alert.pug
+
+
+
+block main
+    - if(messages.success)
+        +alert-success(messages.success)
+    .container
+        +box-head("Sản phẩm nổi bật",productsFeatured)
+        +box-head("Sản phẩm mới nhất",productsNew)
+
+

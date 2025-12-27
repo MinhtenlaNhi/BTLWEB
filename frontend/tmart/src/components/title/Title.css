@@ -1,0 +1,9 @@
+.category a{
+    color: var(--color-3);
+    text-decoration: none;
+}
+
+
+.category a:hover{
+    color: var(--color-2);
+}

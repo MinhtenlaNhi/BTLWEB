@@ -1,0 +1,8 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+block main
+    .container
+        if(data.length > 0)
+            +box-head("Kết quả tìm kiếm",data)
+        else
+            h1 Không tìm thấy sản phẩm

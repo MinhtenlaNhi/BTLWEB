@@ -1,0 +1,20 @@
+extends ../../layouts/default.pug
+
+
+block main 
+    .role 
+
+        .card.mb-5
+            .card-header Thông tin danh mục
+
+            .card-body 
+                .row 
+                    .col-12 
+                        h5 Chức vụ: #{data.title}
+                        h5 Quyền: 
+                            ul 
+                                each item in data.permissions
+                                    li #{item}
+                    
+
+        a(href=`${prefixAdmin}/roles` class="btn btn-primary") Quay lại trang nhóm quyền

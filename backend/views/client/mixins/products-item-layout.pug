@@ -1,0 +1,14 @@
+mixin products-item(item)
+    .product-item
+        if item.featured === "1" 
+            .inner-featured 
+                span.badge.badge-success Nổi bật
+        .inner-image 
+            img(src=item.thumbnail, alt="Anh", srcset="")
+        h3.inner-title
+            a(class="text-decoration-none" href=`/products/detail/${item.slug}`) #{item.title}
+
+        .inner-price-new #{item.price}$    
+        .inner-price-old #{(item.price * item.discountPercentage).toFixed(0)}$
+        .inner-discount -#{item.discountPercentage}%
+

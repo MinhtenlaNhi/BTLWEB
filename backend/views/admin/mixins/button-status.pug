@@ -1,0 +1,6 @@
+mixin button-status(buttonStatus)
+
+    .card-body
+        each item in buttonStatus
+
+            button(class=`border border-success btn ${item.class} my-2 mx-1` button-status=`${item.status}`) #{item.name}

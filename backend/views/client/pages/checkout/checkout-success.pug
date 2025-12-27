@@ -1,0 +1,50 @@
+extends ../../layouts/default.pug
+
+block main 
+    .container 
+        h1.text-success Đặt hàng thành công
+
+        div(class="bg-success px-3 py-4 text-white my-4") Bạn đã đặt hàng thành công! Chúng tôi sẽ xử lý đơn hàng trong thời gian sớm nhất
+
+        h2 Thông tin cá nhân
+        table.table.table-bordered
+            tbody
+                tr 
+                    td Họ và tên 
+                    td 
+                        b #{userInfo.fullName}
+                tr 
+                    td Số điện thoại
+                    td 
+                        b 0#{userInfo.phone}
+                tr 
+                    td Địa chỉ  
+                    td 
+                        b #{userInfo.address}
+        
+        h2 Thông tin đơn hàng 
+            .cart
+                table(class="table table-bordered text-center")
+                    thead
+                        th STT 
+                        th Ảnh 
+                        th Tên 
+                        th Giá 
+                        th Số lượng 
+                        th Tổng tiền 
+                    tbody 
+                        each item,index in listCart 
+                            tr 
+                                td #{index + 1}
+                                td
+                                    img(src=item.thumbnail alt="Ảnh sản phẩm")
+                                td 
+                                    a(href=`/products/detail/${item.slug}`) #{item.title}                              
+                                td #{item.price}$
+                                td #{item.quantity} 
+                                td #{item.totalPrice.toFixed(2)}$
+                div(class="text-right")
+                    h1 
+                        b Tổng đơn hàng: #{listCart.totalCart.toFixed(2)}$
+
+

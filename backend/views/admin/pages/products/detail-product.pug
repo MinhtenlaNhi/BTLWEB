@@ -1,0 +1,30 @@
+extends ../../layouts/default.pug
+
+block main 
+    .product 
+
+        .card.mb-5
+            .card-header Thông tin sản phẩm
+
+            .card-body 
+                .row 
+                    .col-6 
+                        h5 Tiêu đề: #{data.title}
+                        h5 Giá: #{data.price} VND
+                        h5 Vị trí: #{data.position}
+                        h5 Trạng thái: 
+                            if data.status == "active"
+                                span.text-success Hoạt động
+                            else 
+                                span.text-danger Dừng hoạt động
+                    .col-6 
+                        h5 Mô tả:
+                        p #{data.description}
+        .card.mb-5
+            .card-header Hình ảnh sản phẩm
+
+            .card-body 
+                .row 
+                    .col-3.mb-3
+                        img(src=data.thumbnail alt="Image" class="img-fluid")
+        a(href=`${prefixAdmin}/products` class="btn btn-primary") Quay lại danh sách

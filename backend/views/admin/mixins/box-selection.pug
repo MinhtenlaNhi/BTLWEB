@@ -1,0 +1,3 @@
+mixin box-selection(optionActions,selectedSort)
+    each item in optionActions
+        option(name="sort" value=item.value selected = item.value === selectedSort ? true : false ) #{item.name}

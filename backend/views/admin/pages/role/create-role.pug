@@ -1,0 +1,17 @@
+extends ../../layouts/default.pug
+
+block main 
+    if(role.permissions.includes("role_create"))
+    
+        .product
+            h1 Thêm mới nhóm quyền
+            form(id="form-create-role" method="POST" action=`${prefixAdmin}/roles/create-post`)
+                .form-group
+                    label(for="title") Tiêu đề
+                    input(type="text" class="form-control" id="title" name="title"  value="" required)
+                
+                .form-group
+                    label(for="description-role") Mô tả
+                    textarea(class="form-control" id="description-role" rows="3" name="description"  value="" required) 
+                button(type="submit" class="btn btn-primary d-block") Tạo mới
+            

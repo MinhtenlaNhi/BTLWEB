@@ -1,0 +1,42 @@
+extends ../../layouts/default.pug
+
+block main 
+    .container 
+        h1.text-success.my-4 Đặt hàng 
+        .cart
+            table(class="table table-bordered text-center")
+                thead
+                    th STT 
+                    th Ảnh 
+                    th Tên 
+                    th Giá 
+                    th Số lượng 
+                    th Tổng tiền 
+                tbody 
+                    each item,index in listCart 
+                        tr 
+                            td #{index + 1}
+                            td
+                                img(src=item.thumbnail alt="Ảnh sản phẩm")
+                            td 
+                                a(href=`/products/detail/${item.slug}`) #{item.title}                              
+                            td #{item.price}$
+                            td #{item.quantity} 
+                            td #{item.totalPrice.toFixed(2)}$
+            div(class="text-right")
+                h1 
+                    b Tổng đơn hàng: #{listCart.totalCart.toFixed(2)}$
+        form(action="/checkout/order" method='POST' class="rounded border boder-primary py-4 px-4") 
+            div(class="form-group")
+                label(for="fullName") Họ tên
+                input(type="text" name="fullName" id="fullName" class="form-control" required)
+            div(class="form-group")
+                label(for="phone") Số điện thoại
+                input(type="text" name="phone" id="phone" class="form-control" required)
+            div(class="form-group")
+                label(for="address") Địa chỉ
+                input(type="text" name="address" id="address" class="form-control" required)
+            div(class="form-group")
+                button(type="submit" class="btn btn-success form-control") Đặt hàng
+    
+    

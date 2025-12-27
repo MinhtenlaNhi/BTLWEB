@@ -1,0 +1,306 @@
+:root {
+  --color-1: #000000;
+  --color-2: #17af26;
+  --color-3: #ccc;
+  --color-4: #ff3333;
+  --font: "Lato", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  cursor: pointer;
+}
+
+.top.active {
+  animation: show 1s ease;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .adv .left {
+    height: 357px;
+  }
+  .adv .right img {
+    aspect-ratio: 20/9;
+  }
+  .item {
+    width: calc(100% / 5);
+  }
+  .item .price {
+    font-size: 22px;
+  }
+
+  .item .icon {
+    top: 68%;
+    right: 24px;
+  }
+
+  .item .discount-percent {
+    left: 48%;
+    bottom: 19px;
+  }
+  .left {
+    flex-direction: row;
+    background-color: #ffffff;
+  }
+  .left .image {
+    width: 50%;
+  }
+  .left .main-product {
+    width: 50%;
+  }
+
+  .menu {
+    height: auto;
+  }
+  .cart {
+    width: 120px;
+  }
+
+  .search .placeholder .text::before {
+    width: 70%;
+    height: 100%;
+  }
+
+  .modal-search {
+    top: 75px;
+  }
+
+  .modal-search .box {
+    width: 601px;
+    margin: 0 308px;
+  }
+  .sort-product {
+    display: none;
+  }
+  .sort-span {
+    display: flex;
+    gap: 20px;
+  }
+  
+}
+
+@media screen and (max-width: 1200px) {
+  .adv .left {
+    height: 302px;
+  }
+
+  .item {
+    width: calc(100% / 5);
+  }
+  .item .price {
+    font-size: 22px;
+  }
+
+  .item .icon {
+    top: 68%;
+    right: 24px;
+  }
+
+  .item .discount-percent {
+    left: 48%;
+    bottom: 19px;
+  }
+
+  .detail-product .right {
+    margin-top: 20px;
+  }
+
+  td:last-child {
+    padding-left: 20px;
+  }
+
+  .left {
+    flex-direction: row;
+    background-color: #ffffff;
+  }
+  .left .image {
+    width: 45%;
+  }
+  .left .main-product {
+    width: 50%;
+  }
+
+  .menu {
+    height: 71px;
+  }
+  .search .placeholder .text::before {
+    width: 75%;
+    height: 100%;
+  }
+
+  .modal-search {
+    top: 93px;
+  }
+
+  .modal-search .box {
+    width: 360px;
+    margin: 0 350px;
+  }
+  .sort-product {
+    display: none;
+  }
+  .sort-span {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .top-ten {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .top-ten .slide {
+    position: absolute;
+    right: -2px;
+    top: 9%;
+    background-color: var(--color-3);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    padding-top: 3px;
+    cursor: pointer;
+  }
+  .item {
+    width: calc(100% / 4);
+  }
+
+  .item .price {
+    font-size: 19px;
+  }
+
+  .item .icon {
+    top: 63%;
+    right: 14px;
+  }
+
+  .item .price-discount {
+    font-size: 14px;
+  }
+
+  .item .discount-percent {
+    left: 56%;
+    bottom: 35px;
+  }
+
+  .left {
+    background-color: #f9f9fb;
+  }
+  .left .image {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+
+  .left .main-product {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-category table tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    column-gap: 39px;
+  }
+
+  .cart-category table td:nth-child(3) {
+    width: 396px;
+  }
+  .filter {
+    width: 60%;
+    text-align: end;
+    cursor: pointer;
+  }
+
+  .cart {
+    position: absolute;
+    top: -103px;
+    right: -522px;
+    width: 65px;
+  }
+
+  .account {
+    display: none;
+  }
+
+  .cart span {
+    display: none;
+  }
+  .modal-search {
+    top: 130px;
+  }
+
+  .modal-search .box {
+    width: 720px;
+    margin: 0 120px;
+  }
+
+  .sort-span {
+    display: none;
+  }
+  .sort-product {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    width: calc(100% / 2);
+  }
+  .modal-search {
+    top: 130px;
+  }
+
+  .modal-search .box {
+    width: 520px;
+    margin: 0 81px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top-ten {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .cart {
+    position: absolute;
+    top: -86px;
+    right: -345px;
+  }
+  .modal-search {
+    top: 158px;
+  }
+
+  .modal-search .box {
+    width: 500px;
+    margin: 0 5px;
+  }
+}

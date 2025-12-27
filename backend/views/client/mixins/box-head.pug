@@ -1,0 +1,8 @@
+include ./products-layout.pug
+
+
+mixin box-head(message,data)
+    
+    .main
+        h1.text-success.d-block #{message}
+        +product-list(data)

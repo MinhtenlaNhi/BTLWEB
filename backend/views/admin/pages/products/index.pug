@@ -1,0 +1,118 @@
+
+extends ../../layouts/default.pug
+include ../../mixins/box-content.pug
+include ../../mixins/button-status.pug
+include ../../mixins/search.pug
+include ../../mixins/pagination.pug
+include ../../mixins/box-alert.pug 
+include ../../mixins/box-selection.pug
+include ../../mixins/box-datetime.pug
+block main 
+    if(role.permissions.includes("product_view"))
+        - if(messages.success)
+            +alert-success(messages.success)
+        .product 
+            +box-content("Danh sách sản phẩm")
+                    
+
+            .card.mb-5
+                .card-header Bộ lọc và tìm kiếm
+
+                .card-body 
+                    
+                .row 
+                    .col-6 
+
+                        +button-status(buttons)
+                    .col-6 
+                        +search-box(keyword)
+            .card.mb-5
+                .card-header Sắp xếp
+                .card-body
+                    select(class="form-control" name="type" selection-sort style="width: 200px; display: inline-block;")
+                        option(disabled selected = !selectedSort ? true : false) --Sắp xếp--
+                        +box-selection(selection.optionSorts,selectedSort)
+                        
+                    button( type="submit" class="btn btn-danger" delete-sorted) Clear
+
+                if(role.permissions.includes("product_edit") || role.permissions.includes("product_create"))
+                    .card.mb-5
+                        .card-header Hành động
+                        if(role.permissions.includes("product_edit"))
+                            .card-body
+                                form(class="form-inline" method="POST" data-path=`${prefixAdmin}/products/change-many?_method=PATCH` form-change-multi action="")
+                                    div.form-group
+                                        select(class="form-control" name="type" selection-action style="width: 200px;")
+                                            option(disabled selected) --Chọn hành động--
+                                            each item in selection.optionActions
+                                                option(name="status" value=item.value ) #{item.name}
+
+                                    div.form-group.mx-sm-3.d-none
+                                        input(type="text" class="form-control" name="ids" value="")
+                                    
+                                    button( type="submit" class="btn btn-success") Áp dụng
+                        if(role.permissions.includes("product_create"))
+                            .card-body 
+                        
+                                a(href=`${prefixAdmin}/products/create` class="btn btn-outline-success d-inline") + Thêm mới
+            table.my-5
+                thead 
+                    tr 
+                        th 
+                            input(type="checkbox" name="checkall")
+                        th STT 
+                        th Hình ảnh
+                        th Tiêu đề
+                        th Giá
+                        th Vị trí
+                        th Tạo bởi
+                        th Người cập nhật
+                        th Trạng thái
+                        th Hành động
+                tbody 
+                    each item,index in data
+                        tr 
+                            td 
+                                input(type="checkbox" name="id" value=item.id input-item)
+
+                            td #{setPagination.limit * (setPagination.currentPage - 1) + index + 1}
+                            td 
+                                img(src=item.thumbnail, alt="Ảnh sản phẩm", srcset="")
+                            td #{item.title}
+                            td #{item.price}$
+                            td
+                                input(type="text" min = "1" id=item.id value=item.position style="width: 40px")
+                            td 
+                                p #{item.createrProduct}
+                                +time-create(item)
+                            td 
+                                p #{item.updaterProduct}
+                                +time-update(item)
+                            if(role.permissions.includes("product_edit"))
+                                td 
+                                    if(item.status === "active")
+
+                                        a(class="badge badge-success" data-status=item.status data-id=item.id button-change-status ) Hoạt động 
+                                    else 
+                                        a(class="badge badge-danger" data-status=item.status data-id=item.id button-change-status) Dừng hoạt động 
+                            else 
+                                td 
+                                    if(item.status === "active")
+
+                                        a(style="cursor: auto;") Hoạt động 
+                                    else 
+                                        a(style="cursor: auto;") Dừng hoạt động 
+                            
+                            td 
+                                a(class="btn btn-secondary" id=item.id button-detail href=`${prefixAdmin}/products/detail/${item.id}`) Chi tiết
+                                if(role.permissions.includes("product_edit"))
+                                    a(class="btn btn-warning" id=item.id button-update href=`${prefixAdmin}/products/edit/${item.id}`) Sửa
+                                if(role.permissions.includes("product_delete"))
+                                    button(class="btn btn-danger " id=item.id button-delete-product) Xóa
+                    
+            +pagination-box(setPagination)
+
+            form(action="" data-path=`${prefixAdmin}/products/change-product` method="POST" id="form-change-status") 
+
+            form(action="" data-path=`${prefixAdmin}/products/delete-product` method="POST" id="form-delete-item")
+            script(src="/admin/js/product.js") 

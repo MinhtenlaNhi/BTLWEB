@@ -1,0 +1,21 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+
+block main 
+    if(role.permissions.includes("role_edit"))
+        - if(messages.error)
+            +alert-error(messages.error)
+        
+        .role
+            
+            h1 Chỉnh sửa nhóm quyền
+            form(id="form-edit-role" method="POST" action=`${prefixAdmin}/roles/edit-post/${data.id}?_method=PATCH`)
+                .form-group
+                    label(for="title") Tiêu đề
+                    input(type="text" class="form-control" id="title" name="title"  value=data.title)
+                
+                .form-group
+                    label(for="description-role") Mô tả
+                    textarea(class="form-control" id="description-role" rows="3" name="description") #{data.description}
+                button(type="submit" class="btn btn-primary d-block") Chỉnh sửa
+                

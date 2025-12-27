@@ -1,0 +1,39 @@
+mixin table-tree(data,level = 1)
+     
+    each item,index in data
+        - const prefix = new Array(level + 1).join('-- ');
+        tr 
+            td 
+                input(type="checkbox" name="id" value=item.id input-item)
+            td #{item.index}
+            td 
+                img(src=item.thumbnail, alt="Ảnh sản phẩm", srcset="")
+            td #{prefix} #{item.title}
+            td
+                input(type="text" min = "1" id=item.id value=item.position style="width: 40px")
+            
+            if(role.permissions.includes("product_category_edit"))
+                td 
+                    if(item.status === "active")
+
+                        a(class="badge badge-success" data-status=item.status data-id=item.id button-change-status ) Hoạt động 
+                    else 
+                        a(class="badge badge-danger" data-status=item.status data-id=item.id button-change-status) Dừng hoạt động 
+            else    
+                td 
+                    if(item.status === "active")
+
+                        a(style="cursor: auto") Hoạt động 
+                    else 
+                        a(style="cursor: auto") Dừng hoạt động 
+            
+            td 
+                a(class="btn btn-secondary" id=item.id button-detail href=`${prefixAdmin}/product-category/detail/${item.id}`) Chi tiết
+                if(role.permissions.includes("product_category_edit"))
+
+                    a(class="btn btn-warning" id=item.id button-update href=`${prefixAdmin}/product-category/edit/${item.id}`) Sửa
+                if(role.permissions.includes("product_category_delete"))
+                
+                    button(class="btn btn-danger " id=item.id button-delete-product-category) Xóa
+        if(item.children && item.children.length > 0)
+            +table-tree(item.children,level + 1)

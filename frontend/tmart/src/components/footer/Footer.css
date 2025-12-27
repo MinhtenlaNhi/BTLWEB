@@ -1,0 +1,90 @@
+
+
+
+.footer .quality,.footer .price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 0;
+    
+}
+
+.footer .quality .desc,.footer .price .desc{
+    width: 50%;
+    font-size: 15px;
+}
+
+.footer .quality{
+    width: 100%;
+    border-top: none;
+    border-left: none;
+}
+
+.desc{
+    margin-bottom: 0;
+}
+
+.footer .price{
+    border-top: none;
+    border-right: none;
+}
+
+
+.footer .icon{
+    font-size: 15px;
+}
+
+.footer .support,.footer .store{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.support .icon{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--color-4);
+    padding: 5px 5px;
+    color: var(--color-3);
+}
+
+
+.support .desc{
+    color: var(--color-4);
+    font-size: 20px;
+}
+
+.footer .store{
+    color: var(--color-2);
+}
+
+.store .icon{
+    font-size: 30px;
+}
+
+.store .desc{
+    font-size: 20px;
+}
+
+.footer ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+
+.footer .contact{
+    padding: 20px;
+    background-color: var(--color-2);
+}
+
+.contact p{
+    width: 100%;
+    margin-bottom: 0;
+    color: white;
+}

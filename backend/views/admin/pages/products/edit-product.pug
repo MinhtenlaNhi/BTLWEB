@@ -1,0 +1,66 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-alert.pug
+include ../../mixins/box-tree.pug
+
+block main
+    if(role.permissions.includes("product_edit"))
+        - if(messages.error)
+            +alert-error(messages.error)
+        .product
+            h1 Chỉnh sửa sản phẩm
+            form(id="form-edit-product" method="POST" action=`${prefixAdmin}/products/edit-post/${data.id}?_method=PATCH` enctype="multipart/form-data" runat="server")
+                .form-group
+                    label(for="title") Tiêu đề
+                    input(type="text" class="form-control" id="title" name="title" value=data.title)
+                
+                .form-group
+                    label(for="title") Danh mục
+                    select(class="form-control" id="product_category_id" name="product_category_id")
+                        option(value="" ) -- Chọn danh mục --
+                        +box-tree(categoryTree,1,data.product_category_id)
+                .form-group.d-flex.justify-content-start.align-items-center
+                    input(id="1" type="radio" name="featured" value="1" checked=data.featured==="1" ? true : false) 
+                    label(for="1" class="mb-0 mr-4") Nổi bật
+                    input(id="0" type="radio" name="featured" value="0" checked=data.featured==="0" ? true : false) 
+                    label(for="0" class="mb-0 mr-4") Không
+                    
+                .form-group
+                    label(for="description") Mô tả
+                    textarea(class="form-control" id="description" rows="3" name="description" required) #{data.description}
+                
+
+                .form-group
+                    label(for="price") Giá
+                    input(type="text" class="form-control" id="price" name="price" value=data.price)
+                
+                .form-group
+                    label(for="discountPercentage") % Giảm giá
+                    input(type="text" class="form-control" id="discountPercentage" name="discountPercentage" value=data.discountPercentage)
+                
+                .form-group
+                    label(for="stock") Số lượng
+                    input(type="number" class="form-control" id="stock" name="stock" value=(data.stock))
+                
+                div(class="form-group" upload-image)
+                    label(for="thumbnail") Ảnh
+                    input(upload-image-input type="file" class="form-control" name="thumbnail" accept="image/*" value=data.thumbnail)
+                    img(id="thumbnail-preview" src=data.thumbnail alt="" class="upload-image-preview")
+                    
+                    //- img(upload-image-preview src="" class="upload-image-preview")
+                .form-group
+                    label(for="position") Vị trí
+                    input(type="number" class="form-control" id="position" name="position" placeholder="Tự động tăng"  value=data.position)
+                
+                .form-check.d-inline-block.mr-3.my-3
+                    input(class="form-check-input" type="radio" name="status" id="status" value="active" checked=data.status==="active" ? true : false)
+                    
+                    label(class="form-check-label" for="status") Hoạt động
+                    
+                .form-check.d-inline-block.mr-3.my-3
+                    input(class="form-check-input" type="radio" name="status" id="status" value="inactive" checked=data.status==="inactive" ? true : false)
+                    
+                    label(class="form-check-label" for="status") Dừng hoạt động
+                
+
+                <button type="submit" class="btn btn-primary d-block">Cập nhật</button>
+

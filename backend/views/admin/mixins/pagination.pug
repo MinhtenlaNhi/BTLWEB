@@ -1,0 +1,18 @@
+
+mixin pagination-box(setPagination)
+    nav(aria-label="...")
+        ul.pagination
+            if(setPagination.currentPage > 1)
+                li(class="page-item" button-page="1")
+                    <a class="page-link" href="#">&lt&lt</a>
+                li(class="page-item" button-page=setPagination.currentPage - 1)
+                    <a class="page-link" href="#">Previous</a>
+            - for(let i=1;i <= setPagination.totalPage;i++)
+                
+                li(class=`page-item ${setPagination.currentPage === i ? "active" : ""}` button-page=i) <a class="page-link " href="#">#{i}</a>
+            if(setPagination.currentPage < setPagination.totalPage)
+                li(class="page-item" button-page=setPagination.currentPage + 1)
+                    <a class="page-link" href="#">Next</a>
+                li(class="page-item" button-page=setPagination.totalPage)
+                    <a class="page-link" href="#">&gt&gt</a>
+    

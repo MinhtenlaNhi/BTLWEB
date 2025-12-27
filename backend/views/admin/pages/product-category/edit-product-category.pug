@@ -1,0 +1,46 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-tree.pug
+
+
+block main
+    
+    .product-categories
+        h1 Chỉnh sửa danh mục
+        form(id="form-create-product-category" method="POST" action=`${prefixAdmin}/product-category/edit-post/${data.id}` enctype="multipart/form-data" runat="server")
+            .form-group
+                label(for="title") Tiêu đề
+                input(type="text" class="form-control" id="title" name="title"  value=data.title required)
+            
+            .form-group
+                label(for="parentId") Danh mục cha
+                select(class="form-control" id="parentId" name="parentId")
+                    option(value="") -- Chọn danh mục cha --
+                    +box-tree(categoryTree,1,data.parentId)
+
+            .form-group
+                label(for="description") Mô tả
+                textarea(class="form-control" id="description" rows="3" name="description" required) #{data.description}
+            
+            div(class="form-group" upload-image)
+                label(for="thumbnail") Ảnh
+                input(upload-image-input type="file" class="form-control" name="thumbnail" accept="image/*" value="")
+                img(id="thumbnail-preview" src=data.thumbnail alt="" class="upload-image-preview")
+                
+                //- img(upload-image-preview src="" class="upload-image-preview")
+            .form-group
+                label(for="position") Vị trí
+                input(type="number" class="form-control" id="position" name="position" placeholder="Tự động tăng" value=data.position)
+            
+            .form-check.d-inline-block.mr-3.my-3
+                input(class="form-check-input" type="radio" name="status" id="status" value="active" checked = data.status === 'active' ? true : false)
+                
+                label(class="form-check-label" for="status") Hoạt động
+                
+            .form-check.d-inline-block.mr-3.my-3
+                input(class="form-check-input" type="radio" name="status" id="status" value="inactive" checked = data.status === 'inactive' ? true : false)
+                
+                label(class="form-check-label" for="status") Dừng hoạt động
+            
+
+            button(type="submit" class="btn btn-primary d-block") Cập nhật
+
